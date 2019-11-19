@@ -43,7 +43,7 @@ int main()
 
 	for (string s; iss >> s;) {
 		//x[0] == "-"
-		if (s[0] == '-') {
+		if (s[0] == '-' && sizeof s >= 2) {
 			int counter = count(s.begin(), s.end(), '-');
 			if (counter >= 1 && counter <= 2) {
 				result.push_back(s);
@@ -67,10 +67,30 @@ int main()
 	}
 
 	set<char> setsk(begin(st), end(st));
-
-	for(auto i : setsk)
-		cout << i << " ";
-	cout << endl;
+	string answer; 
+ 
+	for(auto i : setsk){
+		switch (i) {
+			case 'h':
+			{
+				answer = "Had been used 'help' command";
+				break;
+			}
+			case 'v':
+			{
+				answer = "Had been used 'version' command";
+				break;
+			}
+			case 'l':
+			{
+				answer = "Had been used 'list' command";
+				break;
+			}
+			default:
+				answer = "Unknown command";		
+		} 
+	cout << answer << endl;
+	}
 
 	return 0;
 }
